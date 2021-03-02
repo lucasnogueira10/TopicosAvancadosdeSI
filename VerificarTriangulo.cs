@@ -15,7 +15,6 @@ namespace ProjExercicio01032021
             int B;
             int C;
 
-
             // Nome do programa
             Console.WriteLine("___FORMANDO TRIÂNGULO___");
 
