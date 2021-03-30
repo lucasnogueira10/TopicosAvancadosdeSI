@@ -1,0 +1,9 @@
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\bin\Debug\Dal.dll
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\bin\Debug\Dal.pdb
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\bin\Debug\Model.dll
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\bin\Debug\Model.pdb
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\obj\Debug\Dal.csprojAssemblyReference.cache
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\obj\Debug\Dal.csproj.CoreCompileInputs.cache
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\obj\Debug\Dal.csproj.CopyComplete
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\obj\Debug\Dal.dll
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Dal\obj\Debug\Dal.pdb

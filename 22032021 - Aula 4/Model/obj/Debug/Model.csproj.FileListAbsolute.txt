@@ -1,0 +1,6 @@
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Model\bin\Debug\Model.dll
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Model\bin\Debug\Model.pdb
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Model\obj\Debug\Model.dll
+C:\TopicosAvancadosEmSistemasDeInformacao\SolutionExercicio22032021\Model\obj\Debug\Model.pdb
