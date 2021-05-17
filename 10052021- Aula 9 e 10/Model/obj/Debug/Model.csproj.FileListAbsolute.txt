@@ -1,0 +1,6 @@
+C:\Users\gabri\source\repos\ProjetoRevisao\Model\bin\Debug\Model.dll
+C:\Users\gabri\source\repos\ProjetoRevisao\Model\bin\Debug\Model.pdb
+C:\Users\gabri\source\repos\ProjetoRevisao\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\gabri\source\repos\ProjetoRevisao\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\gabri\source\repos\ProjetoRevisao\Model\obj\Debug\Model.dll
+C:\Users\gabri\source\repos\ProjetoRevisao\Model\obj\Debug\Model.pdb
