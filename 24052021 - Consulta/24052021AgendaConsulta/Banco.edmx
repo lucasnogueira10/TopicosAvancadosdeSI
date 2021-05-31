@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ConsultaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ConsultaDB.dbo.TB_CONSULTA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TB_CONSULTA">
+          <Key>
+            <PropertyRef Name="id_consulta" />
+          </Key>
+          <Property Name="id_consulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="horario" Type="varchar" MaxLength="50" />
+          <Property Name="id_paciente" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_PACIENTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" />
+          <Property Name="telefone" Type="varchar" MaxLength="50" />
+          <Property Name="endereco" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__TB_CONSUL__id_pa__267ABA7A">
+          <End Role="TB_PACIENTE" Type="Self.TB_PACIENTE" Multiplicity="0..1" />
+          <End Role="TB_CONSULTA" Type="Self.TB_CONSULTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PACIENTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TB_CONSULTA">
+              <PropertyRef Name="id_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConsultaDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PACIENTE" EntityType="Self.TB_PACIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CONSULTA" EntityType="Self.TB_CONSULTA" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TB_CONSULTA].[id_consulta] AS [id_consulta], 
+    [TB_CONSULTA].[horario] AS [horario], 
+    [TB_CONSULTA].[id_paciente] AS [id_paciente]
+    FROM [dbo].[TB_CONSULTA] AS [TB_CONSULTA]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__TB_CONSUL__id_pa__267ABA7A" Association="Self.FK__TB_CONSUL__id_pa__267ABA7A">
+            <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+            <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConsultaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB_PACIENTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_CONSULTA" Relationship="Self.FK__TB_CONSUL__id_pa__267ABA7A" FromRole="TB_PACIENTE" ToRole="TB_CONSULTA" />
+        </EntityType>
+        <EntityType Name="TB_CONSULTA">
+          <Key>
+            <PropertyRef Name="id_consulta" />
+          </Key>
+          <Property Name="id_consulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="horario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_paciente" Type="Int32" />
+          <NavigationProperty Name="TB_PACIENTE" Relationship="Self.FK__TB_CONSUL__id_pa__267ABA7A" FromRole="TB_CONSULTA" ToRole="TB_PACIENTE" />
+        </EntityType>
+        <Association Name="FK__TB_CONSUL__id_pa__267ABA7A">
+          <End Role="TB_PACIENTE" Type="Self.TB_PACIENTE" Multiplicity="0..1" />
+          <End Role="TB_CONSULTA" Type="Self.TB_CONSULTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PACIENTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TB_CONSULTA">
+              <PropertyRef Name="id_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConsultaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TB_PACIENTE" EntityType="Self.TB_PACIENTE" />
+          <EntitySet Name="TB_CONSULTA" EntityType="Self.TB_CONSULTA" />
+          <AssociationSet Name="FK__TB_CONSUL__id_pa__267ABA7A" Association="Self.FK__TB_CONSUL__id_pa__267ABA7A">
+            <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+            <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConsultaDBModelStoreContainer" CdmEntityContainer="ConsultaDBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ConsultaDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PACIENTE">
+            <EntityTypeMapping TypeName="ConsultaDBModel.TB_PACIENTE">
+              <MappingFragment StoreEntitySet="TB_PACIENTE">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CONSULTA">
+            <EntityTypeMapping TypeName="ConsultaDBModel.TB_CONSULTA">
+              <MappingFragment StoreEntitySet="TB_CONSULTA">
+                <ScalarProperty Name="id_consulta" ColumnName="id_consulta" />
+                <ScalarProperty Name="horario" ColumnName="horario" />
+                <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

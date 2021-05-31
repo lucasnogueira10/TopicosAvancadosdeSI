@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ConsultaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TB_PACIENTE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CONSULTA" Relationship="Self.FK__TB_CONSUL__id_pa__267ABA7A" FromRole="TB_PACIENTE" ToRole="TB_CONSULTA" />
+  </EntityType>
+  <EntityType Name="TB_CONSULTA">
+    <Key>
+      <PropertyRef Name="id_consulta" />
+    </Key>
+    <Property Name="id_consulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="horario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_paciente" Type="Int32" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="Self.FK__TB_CONSUL__id_pa__267ABA7A" FromRole="TB_CONSULTA" ToRole="TB_PACIENTE" />
+  </EntityType>
+  <Association Name="FK__TB_CONSUL__id_pa__267ABA7A">
+    <End Role="TB_PACIENTE" Type="Self.TB_PACIENTE" Multiplicity="0..1" />
+    <End Role="TB_CONSULTA" Type="Self.TB_CONSULTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TB_CONSULTA">
+        <PropertyRef Name="id_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ConsultaDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TB_PACIENTE" EntityType="Self.TB_PACIENTE" />
+    <EntitySet Name="TB_CONSULTA" EntityType="Self.TB_CONSULTA" />
+    <AssociationSet Name="FK__TB_CONSUL__id_pa__267ABA7A" Association="Self.FK__TB_CONSUL__id_pa__267ABA7A">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
